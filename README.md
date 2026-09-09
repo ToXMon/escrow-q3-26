@@ -75,9 +75,11 @@ The test suite uses Rust and LiteSVM, not a live validator or devnet wallet.
 The captured passing run is preserved in:
 
 - [`docs/test-output.txt`](docs/test-output.txt) — test and quality-gate output
-- [`docs/test-results.svg`](docs/test-results.svg) — terminal-style screenshot artifact for submission
+- [`docs/test-results-1.jpeg`](docs/test-results-1.jpeg) — terminal screenshot of the full test run
+- [`docs/test-results-2.jpeg`](docs/test-results-2.jpeg) — terminal screenshot of the escrow negative-path tests
+- [`docs/test-results-3.jpeg`](docs/test-results-3.jpeg) — terminal screenshot of the vault negative-path tests
 
-The evidence records five passing workspace test targets: vault IDs, vault lifecycle, escrow make/refund, and escrow update/take.
+The evidence records six passing workspace test binaries covering 17 test cases: vault IDs, vault lifecycle, vault negative paths, escrow make/refund, escrow update/take, and escrow negative paths.
 
 
 Run:
