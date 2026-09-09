@@ -1,6 +1,9 @@
 .anchor
 .DS_Store
 target
+*.keypair.json
+*.json
+!.anchor/
 **/*.rs.bk
 node_modules
 test-ledger

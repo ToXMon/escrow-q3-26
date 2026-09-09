@@ -8,6 +8,7 @@ skip-lint = false
 
 [programs.localnet]
 escrowq32026 = "5Y6HMSgNYbkcBiQCukYvTK56aQarSpq1Nk9aiSsjws2o"
+q3_26_vault = "aNksHVU3gU1mjCPtTBsVk9S7qokAUvXfotB2jBxQQvv"
 
 [provider]
 cluster = "localnet"
