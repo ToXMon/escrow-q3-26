@@ -2,12 +2,13 @@
 
 _2026-09-09 · AdaL_
 
-**TL;DR**: Two Anchor programs, two independent state machines. `escrowq32026`
-runs a trustless token-swap escrow (make → update ⟲ → take | refund).
-`q3_26_vault` runs a personal SOL vault (initialize → deposit ⟲ → withdraw ⟲ →
-close). Animated diagram: `docs/adal/escrow_vault_state_diagram.html` (open in
-any browser, ☀/☾ toggle top-right, passes `check_diagram.py` with 0
-violations).
+**TL;DR**: Two Anchor programs, two independent state machines, two separate
+animated diagrams so nothing overlaps. `escrowq32026` runs a trustless
+token-swap escrow (make → update ⟲ → \[take | refund\]):
+`docs/adal/escrow_state_diagram.html`. `q3_26_vault` runs a personal SOL vault
+(initialize → deposit ⟲ → withdraw → close): `docs/adal/vault_state_diagram.html`.
+Open either in any browser, ☀/☾ toggle top-right, both pass `check_diagram.py`
+with 0 violations.
 
 ## 1. Escrow (`escrowq32026`) — token swap
 
@@ -97,13 +98,19 @@ PDA seeds `["escrow", maker, seed]`. The token vault is an ATA owned by the
 | `test_negative.rs::withdraw_rejects_wrong_user` | `withdraw` guard: same PDA-ownership check. |
 | `test_negative.rs::deposit_rejects_wrong_user` | `deposit` guard: same PDA-ownership check. |
 
-## 3. Diagram
+## 3. Diagrams
 
-Open `docs/adal/escrow_vault_state_diagram.html` in any browser:
-- Two flow lanes (Escrow / Vault), each a pill-to-pill state path.
-- Cyan comet dot traces the escrow happy path (make → take); violet comet
-  dot traces the vault happy path (initialize → deposit → withdraw → close).
-- Self-loop edges (`update`, repeated `deposit`/`withdraw`) render as `↻`
-  annotations on the node.
-- ☀/☾ toggle top-right, ⏯ pause toggle, honors `prefers-reduced-motion`.
-- Verified with `check_diagram.py`: **0 violations**.
+Two separate diagrams (split so state/edge labels never collide):
+
+**`docs/adal/escrow_state_diagram.html`**
+- No escrow → Escrow open → decision ("Taker shows up?") → Taken & closed | Refunded & closed.
+- `update()` self-loop on Escrow open.
+- Cyan comet dot traces make → take; amber comet dot traces the refund branch.
+
+**`docs/adal/vault_state_diagram.html`**
+- No vault → Initialized → Funded → (back to Initialized via withdraw) → Closed.
+- `↻` marks the repeatable `withdraw()` back-edge between Funded and Initialized.
+- Violet comet dot traces the full initialize → deposit → withdraw → close lifecycle.
+
+Both: ☀/☾ toggle top-right, ⏯ pause toggle, honors `prefers-reduced-motion`,
+verified with `check_diagram.py`: **0 violations** each.
