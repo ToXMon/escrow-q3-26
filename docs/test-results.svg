@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560">
+  <rect width="1100" height="560" fill="#111827"/>
+  <rect x="24" y="22" width="1052" height="516" rx="8" fill="#0b1220" stroke="#334155"/>
+  <circle cx="52" cy="50" r="7" fill="#ef4444"/>
+  <circle cx="76" cy="50" r="7" fill="#eab308"/>
+  <circle cx="100" cy="50" r="7" fill="#22c55e"/>
+  <text x="38" y="94" fill="#e5e7eb" font-family="Menlo,Monaco,monospace" font-size="18">$ cargo test --workspace --tests -- --nocapture</text>
+  <text x="38" y="140" fill="#86efac" font-family="Menlo,Monaco,monospace" font-size="17">test test_id ... ok</text>
+  <text x="38" y="176" fill="#86efac" font-family="Menlo,Monaco,monospace" font-size="17">test test_make_and_refund ... ok</text>
+  <text x="38" y="212" fill="#86efac" font-family="Menlo,Monaco,monospace" font-size="17">test update_then_take_transfers_both_sides_and_closes_accounts ... ok</text>
+  <text x="38" y="248" fill="#86efac" font-family="Menlo,Monaco,monospace" font-size="17">test test_id ... ok</text>
+  <text x="38" y="284" fill="#86efac" font-family="Menlo,Monaco,monospace" font-size="17">test vault_initialize_deposit_withdraw_close ... ok</text>
+  <text x="38" y="340" fill="#f8fafc" font-family="Menlo,Monaco,monospace" font-size="19">test result: ok. 5 passed; 0 failed</text>
+  <text x="38" y="394" fill="#cbd5e1" font-family="Menlo,Monaco,monospace" font-size="17">cargo fmt --all -- --check       PASS</text>
+  <text x="38" y="430" fill="#cbd5e1" font-family="Menlo,Monaco,monospace" font-size="17">cargo clippy --workspace --all-targets -D warnings   PASS</text>
+  <text x="38" y="466" fill="#cbd5e1" font-family="Menlo,Monaco,monospace" font-size="17">cargo test --workspace --tests   PASS</text>
+  <text x="38" y="510" fill="#22c55e" font-family="Menlo,Monaco,monospace" font-size="20">ALL REQUIRED TESTS PASS</text>
+</svg>

@@ -80,7 +80,7 @@ fn test_make_and_refund() {
     msg!("Vault PDA: {}\n", vault);
 
     // Mint 1,000 tokens (with 6 decimal places) of Mint A to the maker's associated token account
-    MintTo::new(&mut program, &payer, &mint_a, &maker_ata_a, 1000_000_000)
+    MintTo::new(&mut program, &payer, &mint_a, &maker_ata_a, 1_000_000_000)
         .send()
         .unwrap();
 
@@ -88,12 +88,12 @@ fn test_make_and_refund() {
     let make_ix = Instruction {
         program_id: escrowq32026::id(),
         accounts: escrowq32026::accounts::Make {
-            maker: maker,
-            mint_a: mint_a,
-            mint_b: mint_b,
-            maker_ata_a: maker_ata_a,
-            escrow: escrow,
-            vault: vault,
+            maker,
+            mint_a,
+            mint_b,
+            maker_ata_a,
+            escrow,
+            vault,
             associated_token_program: ASSOCIATED_TOKEN_PROGRAM_ID,
             token_program: TOKEN_PROGRAM_ID,
             system_program: SYSTEM_PROGRAM_ID,
@@ -142,11 +142,11 @@ fn test_make_and_refund() {
     let refund_ix = Instruction {
         program_id: escrowq32026::id(),
         accounts: escrowq32026::accounts::Refund {
-            maker: maker,
-            mint_a: mint_a,
-            maker_ata_a: maker_ata_a,
-            escrow: escrow,
-            vault: vault,
+            maker,
+            mint_a,
+            maker_ata_a,
+            escrow,
+            vault,
             token_program: TOKEN_PROGRAM_ID,
             system_program: SYSTEM_PROGRAM_ID,
         }

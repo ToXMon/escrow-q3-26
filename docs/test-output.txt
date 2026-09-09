@@ -1,0 +1,23 @@
+$ cargo test --workspace --tests -- --nocapture
+
+running 1 test
+test test_id ... ok
+
+running 1 test
+test test_make_and_refund ... ok
+
+running 1 test
+test update_then_take_transfers_both_sides_and_closes_accounts ... ok
+
+running 1 test
+test test_id ... ok
+
+running 1 test
+test vault_initialize_deposit_withdraw_close ... ok
+
+test result: ok. 5 passed; 0 failed
+
+Quality gates:
+cargo fmt --all -- --check       PASS
+cargo clippy --workspace --all-targets -- -D warnings   PASS
+cargo test --workspace --tests   PASS
