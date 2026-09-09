@@ -1,23 +1,105 @@
+$ cargo fmt --all -- --check
+
+$ cargo clippy --workspace --all-targets -- -D warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.71s
+
 $ cargo test --workspace --tests -- --nocapture
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.41s
+     Running unittests src/lib.rs (target/debug/deps/escrowq32026-39b9ecb307e6ae77)
 
 running 1 test
 test test_id ... ok
 
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/mod.rs (target/debug/deps/mod-e47a1b0e13d0d94c)
+
 running 1 test
+Mint A: BHxFaj8otsjYGZiZoiJaxNiyApR2LLPyv1RAZXnjzrJN
+
+Mint B: 7Vjgb1VzorZwkPtckR6SHn9cFAFfnDV4FpwVd4qTWVBh
+
+Maker ATA A: By5xCjd7usSdwxkWRLwhfL3yAWa2WDKTf8XuCJWT2JDW
+
+Escrow PDA: 49VwoF1ZMJBbv5zamvSFuM5WDSkBUEdN9eTFgSMt178V
+
+Vault PDA: 3tCwkENNQnrcNs54kfMhxjGVZAmXefVLGzvubAovBozz
+
+
+
+Make transaction sucessfull
+CUs Consumed: 46103
+Tx Signature: 52JunaNthEK4u6gfVp9YQBup6p7pUsGt6ZL1Wkp2mUmeH5TbdXoNCLv8vCqcfdpqPUzp8wBiQx5M77eyiiEpyaSg
+
+
+Refund transaction sucessful
+CUs Consumed: 23782
+Tx Signature: 4piCBMnu6wSYaz5PW8L67xpcMvTCqsaHfbUB5Y7PsAEjsuwCpHPQbCAd7KdhddN4ATsxiT2dxmJNzDHHPF6NMUKJ
 test test_make_and_refund ... ok
 
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+
+     Running tests/test_negative.rs (target/debug/deps/test_negative-e0bf4b64cb33523a)
+
+running 8 tests
+update rejected zero receive
+test update_rejects_zero_receive ... ok
+make rejected zero deposit and zero receive
+test make_rejects_zero_deposit_or_receive ... ok
+make rejected reused seed
+test make_rejects_reused_seed ... ok
+refund rejected non-maker
+take rejected insufficient taker balance
+test take_rejects_insufficient_taker_balance ... ok
+test refund_rejects_non_maker ... ok
+update rejected non-maker
+test update_rejects_non_maker ... ok
+take rejected after refund
+test take_rejects_after_refund ... ok
+take rejected wrong mint_b
+test take_rejects_wrong_mint_b ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.20s
+
+     Running tests/test_take.rs (target/debug/deps/test_take-7f2adef74b99d544)
+
 running 1 test
+update and take verified
 test update_then_take_transfers_both_sides_and_closes_accounts ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+     Running unittests src/lib.rs (target/debug/deps/q3_26_vault-290996159b22666c)
 
 running 1 test
 test test_id ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/test_lifecycle.rs (target/debug/deps/test_lifecycle-caa6d57b9f3160d2)
 
 running 1 test
 test vault_initialize_deposit_withdraw_close ... ok
 
-test result: ok. 5 passed; 0 failed
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+     Running tests/test_negative.rs (target/debug/deps/test_negative-3b7edb153958aac9)
+
+running 7 tests
+test initialize_rejects_reuse ... ok
+test deposit_rejects_zero ... ok
+test close_rejects_wrong_user ... ok
+test withdraw_rejects_zero ... ok
+test withdraw_rejects_overdraw ... ok
+test withdraw_rejects_wrong_user ... ok
+test deposit_rejects_wrong_user ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+
 
 Quality gates:
 cargo fmt --all -- --check       PASS
 cargo clippy --workspace --all-targets -- -D warnings   PASS
-cargo test --workspace --tests   PASS
+cargo test --workspace --tests -- --nocapture   PASS
+
+Total test targets passing: 6 binaries, 17 test cases, 0 failures
